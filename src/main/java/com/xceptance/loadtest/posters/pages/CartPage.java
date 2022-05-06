@@ -22,6 +22,9 @@ public class CartPage
         Action.run("Checkout", () ->
         {
             $("#btnStartCheckout").should(visible).click();
+            
+            // validate
+            $("#formAddDelAddr").should(visible);
         });       
     }
 }

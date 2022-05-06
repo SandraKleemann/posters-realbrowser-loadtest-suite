@@ -37,6 +37,9 @@ public class CheckoutPage
             $("#zip").should(visible).sendKeys(address.zip);
                         
             $("#btnAddDelAddr").should(visible).click();
+            
+            // validate
+            $("#formAddPayment").should(visible);
         });       
     }
     
@@ -53,6 +56,9 @@ public class CheckoutPage
             $("#expirationDateYear").should(visible).sendKeys(cc.expirationYear);         
             
             $("#btnAddPayment").should(visible).click();
+            
+            // validate
+            $("#titleOrderOverview").should(visible);
         });       
     }
     
@@ -61,6 +67,9 @@ public class CheckoutPage
         Action.run("PlaceOrder", () ->
         {       
             $("#btnOrder").scrollIntoView(false).should(visible).click();
+            
+         // validate
+            $("#successMessage").should(visible);
         });       
     }
 }

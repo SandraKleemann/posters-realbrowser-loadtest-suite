@@ -46,8 +46,7 @@ public class TGuestCheckout extends LoadTestCase
     	
     	Context.get().data.attachAccount();
     	CheckoutPage.fillShippingForm();
-    	CheckoutPage.fillPaymentForm();
-    	CheckoutPage.placeOrder();    	
+    	CheckoutPage.fillPaymentForm();    	
     }
 
     private void searchOrBrowse()
