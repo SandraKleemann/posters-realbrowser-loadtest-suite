@@ -148,4 +148,34 @@ public class GeneralPage
             $("#successMessage").should(visible);
         });
     }
+
+    public static void login()
+    {
+        Action.run("Login", () ->
+        {
+            Account account = Context.get().data.getAccount().get();
+
+            $("#email").should(visible).sendKeys(account.email);
+            $("#password").should(visible).sendKeys(account.password);
+            
+            $("#btnSignIn").should(visible).click();
+            
+            // validate
+            $("#successMessage").should(visible);
+        });
+        
+    }
+
+    public static void logout()
+    {
+        Action.run("Logout", () ->
+        {
+            $("#showUserMenu").should(visible).hover();
+            $(".goToLogout").should(visible).hover().click();
+            
+            // validate
+            $("#successMessage").should(visible);
+        });
+        
+    }
 }

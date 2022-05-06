@@ -13,7 +13,7 @@ import com.xceptance.loadtest.posters.pages.ProductDetailsPage;
 import com.xceptance.loadtest.posters.pages.SearchResultPage;
 
 
-public class TGuestOrder extends LoadTestCase
+public class TRegisteredCheckout extends LoadTestCase
 {
 	/**
 	 * Open the landing page, browse the catalog. If there's a result grid open a random product's detail view.
@@ -24,6 +24,11 @@ public class TGuestOrder extends LoadTestCase
     	// loads the homepage, data needed is taking from the properties automatically
     	// using the Context as well as the attached configuration.
     	Homepage.open();
+        
+        Context.get().data.attachAccount();
+        GeneralPage.goToLogin();
+        GeneralPage.createAccount();
+        GeneralPage.login();
     	
     	int targetItemCount = Context.configuration().addToCartCount.value;
     	final SafetyBreak addToCartSafetyBreak = new SafetyBreak(5);
@@ -43,10 +48,11 @@ public class TGuestOrder extends LoadTestCase
     	GeneralPage.viewCart();
     	
     	CartPage.proceedToCheckout();
-    	
+
     	CheckoutPage.fillShippingForm();
     	CheckoutPage.fillPaymentForm();
-    	CheckoutPage.placeOrder();    	
+    	
+    	GeneralPage.logout();
     }
 
     private void searchOrBrowse()
